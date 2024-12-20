@@ -14,7 +14,7 @@ CREATE TABLE usuarios (
 
 -- Crear tabla de tiendas
 CREATE TABLE tiendas (
-    id INT AUTO_INCREMENT PRIMARY KEY,  -- Modificado a INT AUTO_INCREMENT
+    id INT AUTO_INCREMENT PRIMARY KEY,
     descripcion TEXT,
     ubicacion VARCHAR(255)
 );
@@ -33,7 +33,7 @@ CREATE TABLE tallas_por_tienda (
 
 -- Crear tabla de prendas
 CREATE TABLE prendas (
-    id INT AUTO_INCREMENT PRIMARY KEY,  -- Modificado a INT AUTO_INCREMENT
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
@@ -56,3 +56,47 @@ CREATE TABLE carrito (
     FOREIGN KEY (prenda_id) REFERENCES prendas(id),
     FOREIGN KEY (talla_id) REFERENCES tallas_por_tienda(id)
 );
+
+-- Inserts en tabla tiendas
+INSERT INTO tiendas (descripcion, ubicacion) 
+VALUES 
+    ('Luxury Fashion', 'Calle Principal 123'),
+    ('Sporty Shop', 'Avenida Norte 456'),
+    ('Casual Wear', 'Calle Sur 789');
+
+-- Inserts en tabla tallas_por_tienda
+INSERT INTO tallas_por_tienda (tienda_id, talla, pecho, cintura, cadera) 
+VALUES 
+    (1, 'S', 85.0, 70.0, 90.0),
+    (1, 'M', 95.0, 80.0, 100.0),
+    (2, 'L', 105.0, 90.0, 110.0),
+    (2, 'XL', 115.0, 100.0, 120.0);
+
+-- Insertar prendas para "Luxury Fashion"
+INSERT INTO prendas (nombre, descripcion, precio, talla_id, tienda_id, tipo_tela, ajuste, cantidad) 
+VALUES
+    ('Vestido Largo', 'Vestido largo de seda para eventos elegantes.', 120.00, 1, 1, 'Seda', 'Ajustada', 10),
+    ('Vestido Corto', 'Vestido corto de terciopelo ideal para fiestas.', 100.00, 2, 1, 'Terciopelo', 'Regular', 5),
+    ('Mono', 'Mono de manga larga para ocasiones formales.', 150.00, 3, 1, 'Algodón', 'Ajustada', 7),
+    ('Abrigo', 'Abrigo de lana con un toque sofisticado.', 200.00, 4, 1, 'Lana', 'Sueltita', 3);
+
+-- Insertar prendas para "Sporty Shop"
+INSERT INTO prendas (nombre, descripcion, precio, talla_id, tienda_id, tipo_tela, ajuste, cantidad) 
+VALUES
+    ('Camiseta Deportiva', 'Camiseta deportiva ligera para entrenamiento.', 25.00, 2, 2, 'Poliéster', 'Regular', 15),
+    ('Pantalón de Chándal', 'Pantalón de chándal cómodo para hacer deporte.', 30.00, 3, 2, 'Algodón', 'Regular', 20),
+    ('Sudadera de Chándal', 'Sudadera con capucha para entrenamiento y descanso.', 35.00, 4, 2, 'Poliéster', 'Sueltita', 10),
+    ('Mallas Deportivas', 'Mallas ajustadas para correr o hacer ejercicio.', 20.00, 1, 2, 'Elastano', 'Ajustada', 25);
+
+-- Insertar prendas para "Casual Wear"
+INSERT INTO prendas (nombre, descripcion, precio, talla_id, tienda_id, tipo_tela, ajuste, cantidad) 
+VALUES
+    ('Vaquero', 'Jeans de corte recto, muy cómodos para el día a día.', 50.00, 3, 3, 'Denim', 'Regular', 30),
+    ('Camiseta Oversize', 'Camiseta oversized, ideal para un look casual.', 30.00, 4, 3, 'Algodón', 'Sueltita', 40),
+    ('Camiseta Ajustada', 'Camiseta ajustada para un look más entallado.', 25.00, 2, 3, 'Algodón', 'Ajustada', 50),
+    ('Chaqueta', 'Chaqueta ligera de algodón para el otoño.', 70.00, 1, 3, 'Algodón', 'Regular', 15);
+
+-- Verificar los datos insertados
+SELECT * FROM tiendas;
+SELECT * FROM tallas_por_tienda;
+SELECT * FROM prendas;
