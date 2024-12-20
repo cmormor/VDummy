@@ -22,7 +22,7 @@ CREATE TABLE tiendas (
 -- Crear tabla de tallas por tienda
 CREATE TABLE tallas_por_tienda (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tienda_nombre VARCHAR(255),  -- Relación con el nombre de la tienda
+    tienda_nombre VARCHAR(255),  -- Relación con el nombre de la tienda. Posiblemente se elimine, es innecesaria, se puede repetir tallas en otras tiendas.
     talla VARCHAR(2) NOT NULL,  -- S, M, L, XL
     pecho DECIMAL(5, 2) NOT NULL,
     cintura DECIMAL(5, 2) NOT NULL,
