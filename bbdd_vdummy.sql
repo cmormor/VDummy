@@ -21,10 +21,9 @@ CREATE TABLE tiendas (
     ubicacion VARCHAR(255)
 );
 
--- Tabla de tallas
+-- Tabla de tallas (usando la talla como ID)
 CREATE TABLE tallas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    talla VARCHAR(2) NOT NULL,  -- S, M, L, XL
+    talla VARCHAR(2) PRIMARY KEY,  -- S, M, L, XL
     pecho DECIMAL(5, 2) NOT NULL,
     cintura DECIMAL(5, 2) NOT NULL,
     cadera DECIMAL(5, 2) NOT NULL
@@ -36,9 +35,9 @@ CREATE TABLE prendas (
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
-    talla_id INT,  -- Relación con la tabla tallas
+    talla VARCHAR(2),  -- Relación con la tabla tallas usando el campo talla
     tienda_id INT,  -- Relación con la tabla tiendas
-    FOREIGN KEY (talla_id) REFERENCES tallas(id),
+    FOREIGN KEY (talla) REFERENCES tallas(talla),
     FOREIGN KEY (tienda_id) REFERENCES tiendas(id)
 );
 
@@ -47,10 +46,10 @@ CREATE TABLE carrito (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,  -- Relación con la tabla usuarios
     prenda_id INT,   -- Relación con la tabla prendas
-    talla_id INT,    -- Relación con la tabla tallas
+    talla VARCHAR(2),    -- Relación con la tabla tallas
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (prenda_id) REFERENCES prendas(id),
-    FOREIGN KEY (talla_id) REFERENCES tallas(id)
+    FOREIGN KEY (talla) REFERENCES tallas(talla)
 );
 
 -- Insertar datos en la tabla tallas
