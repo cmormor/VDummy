@@ -64,13 +64,30 @@ VALUES
     ('Sporty Shop', 'Avenida Norte 456'),
     ('Casual Wear', 'Calle Sur 789');
 
--- Inserts en tabla tallas_por_tienda
+-- Inserts en tabla tallas_por_tienda (ahora con 4 tallas por tienda)
+-- Para "Luxury Fashion"
 INSERT INTO tallas_por_tienda (tienda_id, talla, pecho, cintura, cadera) 
 VALUES 
     (1, 'S', 85.0, 70.0, 90.0),
     (1, 'M', 95.0, 80.0, 100.0),
-    (2, 'L', 105.0, 90.0, 110.0),
-    (2, 'XL', 115.0, 100.0, 120.0);
+    (1, 'L', 105.0, 90.0, 110.0),
+    (1, 'XL', 115.0, 100.0, 120.0);
+
+-- Para "Sporty Shop"
+INSERT INTO tallas_por_tienda (tienda_id, talla, pecho, cintura, cadera) 
+VALUES 
+    (2, 'S', 80.0, 65.0, 85.0),
+    (2, 'M', 90.0, 75.0, 95.0),
+    (2, 'L', 100.0, 85.0, 105.0),
+    (2, 'XL', 110.0, 95.0, 115.0);
+
+-- Para "Casual Wear"
+INSERT INTO tallas_por_tienda (tienda_id, talla, pecho, cintura, cadera) 
+VALUES 
+    (3, 'S', 80.0, 65.0, 85.0),
+    (3, 'M', 90.0, 75.0, 95.0),
+    (3, 'L', 100.0, 85.0, 105.0),
+    (3, 'XL', 110.0, 95.0, 115.0);
 
 -- Insertar prendas para "Luxury Fashion"
 INSERT INTO prendas (nombre, descripcion, precio, talla_id, tienda_id, tipo_tela, ajuste, cantidad) 
