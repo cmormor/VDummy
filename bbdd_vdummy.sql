@@ -49,7 +49,7 @@ CREATE TABLE prendas (
 CREATE TABLE carrito (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,  -- Relación con la tabla usuarios
-    prenda_id INT,   -- Relación con la tabla prendas
+    prenda_id VARCHAR(255),   -- Relación con la tabla prendas (nombre)
     talla_id INT,    -- Relación con la tabla tallas_por_tienda
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (prenda_id) REFERENCES prendas(nombre),
